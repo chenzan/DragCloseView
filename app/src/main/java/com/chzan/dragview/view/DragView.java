@@ -147,7 +147,7 @@ public class DragView extends FrameLayout {
             }
             if (beforePage != null) {
                 if (DragHelper.dragOrientation == DragHelper.HORIZONTAL)
-                    beforePage.getWindow().getDecorView().setTranslationX((DragView.this.getMeasuredWidth() / 3)
+                    beforePage.getWindow().getDecorView().setTranslationX((DragView.this.getMeasuredWidth() / 4)
                             * (mScrollPercent - 1));
                 else
                     beforePage.getWindow().getDecorView().setTranslationY((DragView.this.getMeasuredHeight() / 6)
@@ -183,7 +183,7 @@ public class DragView extends FrameLayout {
                     if (slideStateListener != null) {
                         if (beforePage != null) {
                             if (DragHelper.dragOrientation == DragHelper.HORIZONTAL)
-                                beforePage.getWindow().getDecorView().setTranslationX(-DragView.this.getMeasuredWidth() / 3);
+                                beforePage.getWindow().getDecorView().setTranslationX(-DragView.this.getMeasuredWidth() / 4);
                             else
                                 beforePage.getWindow().getDecorView().setTranslationY(-DragView.this.getMeasuredHeight() / 6);
                         }
@@ -249,31 +249,16 @@ public class DragView extends FrameLayout {
         final Rect childRect = mTmpRect;
         //得到当前View的位置
         child.getHitRect(childRect);
-
-//        if ((mEdgeFlag & EDGE_LEFT) != 0) {
         //给drawable设置位置
         if (DragHelper.dragOrientation == DragHelper.HORIZONTAL) {
-            mLeftShadowDrawable.setBounds(childRect.left - mLeftShadowDrawable.getIntrinsicWidth(), childRect.top, childRect.left, childRect.bottom);
+            mLeftShadowDrawable.setBounds(childRect.left - mLeftShadowDrawable.getIntrinsicWidth(),
+                    childRect.top, childRect.left, childRect.bottom);
             mLeftShadowDrawable.draw(canvas);
         } else {
-            mTopShadowDrawable.setBounds(childRect.left, childRect.top - mTopShadowDrawable.getIntrinsicHeight(), childRect.right, childRect.top + stateHeight);
+            mTopShadowDrawable.setBounds(childRect.left, childRect.top - mTopShadowDrawable.getIntrinsicHeight(),
+                    childRect.right, childRect.top + stateHeight);
             mTopShadowDrawable.draw(canvas);
         }
-        //画到canvas上
-
-//        }
-//        //给drawable设置位置、设置透明度、画到canvas上
-//        if ((mEdgeFlag & EDGE_RIGHT) != 0) {
-//            mShadowRight.setBounds(childRect.right, childRect.top, childRect.right + mShadowRight.getIntrinsicWidth(), childRect.bottom);
-//            mShadowRight.setAlpha((int) (mScrimOpacity * FULL_ALPHA));
-//            mShadowRight.draw(canvas);
-//        }
-//        //给drawable设置位置、设置透明度、画到canvas上
-//        if ((mEdgeFlag & EDGE_BOTTOM) != 0) {
-//            mShadowBottom.setBounds(childRect.left, childRect.bottom, childRect.right, childRect.bottom + mShadowBottom.getIntrinsicHeight());
-//            mShadowBottom.setAlpha((int) (mScrimOpacity * FULL_ALPHA));
-//            mShadowBottom.draw(canvas);
-//        }
     }
 
     @Override
