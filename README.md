@@ -1,0 +1,2 @@
+# DragCloseView
+使用ViewDragHelper拖动View进行关闭
