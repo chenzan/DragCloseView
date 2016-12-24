@@ -181,13 +181,13 @@ public class DragView extends FrameLayout {
                 case ViewDragHelper.STATE_DRAGGING:
 //                    Log.e(TAG, "dragging");
                     if (slideStateListener != null) {
-                        if (beforePage != null) {
-                            if (DragHelper.dragOrientation == DragHelper.HORIZONTAL)
-                                beforePage.getWindow().getDecorView().setTranslationX(-DragView.this.getMeasuredWidth() / 4);
-                            else
-                                beforePage.getWindow().getDecorView().setTranslationY(-DragView.this.getMeasuredHeight() / 6);
-                        }
                         slideStateListener.onViewScrollStart();
+                    }
+                    if (beforePage != null) {
+                        if (DragHelper.dragOrientation == DragHelper.HORIZONTAL)
+                            beforePage.getWindow().getDecorView().setTranslationX(-DragView.this.getMeasuredWidth() / 4);
+                        else
+                            beforePage.getWindow().getDecorView().setTranslationY(-DragView.this.getMeasuredHeight() / 6);
                     }
                     break;
                 case ViewDragHelper.STATE_SETTLING:
